@@ -6,15 +6,22 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, IdBaseComponent, System.JSON,
   IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, IdIOHandler,
-  IdIOHandlerSocket, IdIOHandlerStack, IdSSL, IdSSLOpenSSL;
+  IdIOHandlerSocket, IdIOHandlerStack, IdSSL, IdSSLOpenSSL,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
 type
   TfrmValidaCheckin = class(TForm)
     Button1: TButton;
     Edit1: TEdit;
-    IdHTTP1: TIdHTTP;
-    IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
+    Label1: TLabel;
+    edtToken: TEdit;
+    Image1: TImage;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit2: TEdit;
+    RadioGroup1: TRadioGroup;
     procedure Button1Click(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
   private
     { Private declarations }
     function ValidarCheckin(Token : String) : String;
@@ -76,6 +83,11 @@ begin
       ShowMessage(Mensagem);
 end;
 
+procedure TfrmValidaCheckin.RadioGroup1Click(Sender: TObject);
+begin
+   Edit1.Text := RadioGroup1.Items[RadioGroup1.ItemIndex];
+end;
+
 function TfrmValidaCheckin.ValidarCheckin(Token: String): string;
 var
   Xbody , Resp: TStringStream;
@@ -108,8 +120,7 @@ begin
 
 
         HTTP.Request.CustomHeaders.FoldLines := false;
-        HTTP.Request.CustomHeaders.AddValue('Authorization','Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5NWRhMGVjNC1lODhjLTQ2NzktYTM5Ni0wYjd'+
-             'iMzkyNDE4N2IiLCJpc3MiOiJwYXJ0bmVycy10ZXN0aW5nLWlhbS51cy5zdGcuZ3ltcGFzcy5jbG91ZCIsImlhdCI6MTY4NDUyMDg1OCwianRpIjoiOTVkYTBlYzQtZTg4Yy00Njc5LWEzOTYtMGI3YjM5MjQxODdiIn0.p9Ft9A3davZQ5sexsWJVUUrN_ikZPPMp2AqDVxORa_U');
+        HTTP.Request.CustomHeaders.AddValue('Authorization','Bearer '+edtToken.Text);
         HTTP.Request.CustomHeaders.AddValue('X-Gym-Id','11');
         try
           HTTP.Post('https://sandbox.partners.gympass.com/access/v1/validate', xbody, Resp) ;
