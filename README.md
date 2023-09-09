@@ -9,4 +9,10 @@ Exemplo feito em delphi, para validar o checkin do aluno se realmente ele pode e
 
 Como deve ser Usado:
 
-o ato de fazer checkin do aluno, È informar a academia de que ele tem um plano v·lido, que o plano dele tem acesso aquela atividade e que ele est· prÛximo da atividade e quer executar. Feito isso, o sistema integrado deve perguntar para a Gympass (ENDPOINT VALIDATE) se o aluno em quest„o tem di·ria valida, e se a Gympass responder positivo, ent„o, nesse momento vocÍ pode liberar a catraca
+o ato de fazer checkin do aluno, √© informar a academia de que ele tem um plano v√°lido, que o plano dele tem acesso aquela atividade e que ele est√° pr√≥ximo da atividade e quer executar. Feito isso, o sistema integrado deve perguntar para a Gympass (ENDPOINT VALIDATE) se o aluno em quest√£o tem di√°ria valida, e se a Gympass responder positivo, ent√£o, nesse momento voc√™ pode liberar a catraca
+
+
+
+
+Exemplo Feito por Rafael Mattos
+Email: rafmattos@hotmail.com
