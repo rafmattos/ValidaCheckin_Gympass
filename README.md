@@ -14,5 +14,5 @@ o ato de fazer checkin do aluno, é informar a academia de que ele tem um plano 
 
 
 
-Exemplo Feito por Rafael Mattos
+Rafael Mattos
 Email: rafmattos@hotmail.com
